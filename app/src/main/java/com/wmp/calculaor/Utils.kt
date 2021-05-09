@@ -1,16 +1,12 @@
 package com.wmp.calculaor
 
-import android.content.SharedPreferences
-import kotlinx.android.synthetic.main.activity_main.*
-
 object Utils {
-   private lateinit var sharedPreferences:SharedPreferences
 
 
     fun MADSCalculation(input:String):Double
     {
         if (input.contains("-") || input.contains("/")) {
-            val operands = input.split("[\\/\\-]").toTypedArray()
+            val operands = input.split("[/-]".toRegex()).toTypedArray()
             var counter: Int
             var index_operator: Int
             var operator: Char
@@ -39,11 +35,6 @@ object Utils {
         } else {
             throw RuntimeException()
         }
-    }
-
-    private fun saveToPref(toString: String, result: Double) {
-
-
     }
 
 }
